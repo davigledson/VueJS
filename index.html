@@ -8,18 +8,52 @@
 <body>
    <div id="app">
 {{mensagem}}
+<br>
+Valor total {{valorTotal}}
+<br>
+Logado {{logado}}
+<br>
+Hobbie {{hobbies[0]}}
+<br>
+Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}}
    </div>
    teste
    <script src="vue.js"></script>
     <script>
-    options = {
+   
+
+    const vm = new Vue({
         el:'#app',
         data:{ //atributos reativos
-            mensagem: 'Primeiro template controlado pelo vue' //se colocar o {} duplo no html vai aparecer o conteúdo - dobro mushache (fazendo um binding - siginica amarração ou ligação)
-        }
-    }
+            mensagem: 'Primeiro template controlado pelo vue', //se colocar o {} duplo no html vai aparecer o conteúdo - dobro mushache (fazendo um binding - siginica amarração ou ligação)
+            valorTotal: 150.47,
+            logado: false,
+            hobbies: [
+                'Dormir',
+                'Colecionar videos games antigos',
+                'Correr',
+                'Trilhas'
+            ],
+            perfil: {
+                 nome: 'Davi Gledson',
+                site: 'davigledson@outlook.com',
+                idade: 21,
+                cursos: [
+                    {
+                        nome:'Laravel',carga: '50 horas',
+                        
+                    },
+                    {
+                      nome:'Bancos de Dados relacionais', carga: '40 horas'  
+                    }
+                ]
+            }
+               
+            
+            
 
-    const vm = new Vue(options) // vm = ViewModel
+        }
+    }) // vm = ViewModel
     console.log(vm) 
 </script>
 </body>
