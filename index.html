@@ -7,7 +7,13 @@
 </head>
 <body>
    <div id="app">
-{{mensagem}}
+    {{somar()}} <br>
+    {{subtrair()}} <br>
+    {{multiplicar()}} <br>
+    {{dividir()}} <br>
+    {{numeroAleatorio()}}
+<!-- {{mensagem}}
+        
 <br>
 Valor total {{valorTotal}}
 <br>
@@ -15,7 +21,7 @@ Logado {{logado}}
 <br>
 Hobbie {{hobbies[0]}}
 <br>
-Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}}
+Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
    </div>
    teste
    <script src="vue.js"></script>
@@ -25,34 +31,55 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}}
     const vm = new Vue({
         el:'#app',
         data:{ //atributos reativos
-            mensagem: 'Primeiro template controlado pelo vue', //se colocar o {} duplo no html vai aparecer o conteúdo - dobro mushache (fazendo um binding - siginica amarração ou ligação)
-            valorTotal: 150.47,
-            logado: false,
-            hobbies: [
-                'Dormir',
-                'Colecionar videos games antigos',
-                'Correr',
-                'Trilhas'
-            ],
-            perfil: {
-                 nome: 'Davi Gledson',
-                site: 'davigledson@outlook.com',
-                idade: 21,
-                cursos: [
-                    {
-                        nome:'Laravel',carga: '50 horas',
+            // mensagem: 'Primeiro template controlado pelo vue', //se colocar o {} duplo no html vai aparecer o conteúdo - dobro mushache (fazendo um binding - siginica amarração ou ligação)
+            // valorTotal: 150.47,
+            // logado: false,
+            // hobbies: [
+            //     'Dormir',
+            //     'Colecionar videos games antigos',
+            //     'Correr',
+            //     'Trilhas'
+            // ],
+            // perfil: {
+            //      nome: 'Davi Gledson',
+            //     site: 'davigledson@outlook.com',
+            //     idade: 21,
+            //     cursos: [
+            //         {
+            //             nome:'Laravel',carga: '50 horas',
                         
-                    },
-                    {
-                      nome:'Bancos de Dados relacionais', carga: '40 horas'  
-                    }
-                ]
-            }
+            //         },
+            //         {
+            //           nome:'Bancos de Dados relacionais', carga: '40 horas'  
+            //         }
+            //     ]
+            // }
                
             
             
+                
+        },
 
-        }
+        methods:{
+                    somar: function somar() { //convencional
+                        return 4+2;
+                    },
+
+                    subtrair: function (){
+                        //anonima
+                        return 4-2  
+                    },
+                    multiplicar: () => {
+                        //arrow function
+                        return 4*2;
+                    },
+                    dividir() { //forma de definor os pares de chaves/valor
+                        return 4 / 2;
+                    },
+                    numeroAleatorio(){
+                        return Math.random()
+                    }
+                }
     }) // vm = ViewModel
     console.log(vm) 
 </script>
