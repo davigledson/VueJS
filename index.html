@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vue</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
 </head>
 <body>
    <div id="app">
-    {{somar()}} <br>
+    <a v-bind:href="site">Site</a>
+    <p v-bind:class="cor">Entendendo a diretiva v-bind</p>
+    <input type="text" v-bind:placeholder="preenchimento">
+    <input type="text" v-bind:placeholder="preenchimento" v-bind:value="valor">
+    <input type="checkbox" v-bind:checked="check">
+    <!-- {{somar()}} <br>
     {{subtrair()}} <br>
     {{multiplicar()}} <br>
-    {{dividir()}} <br>
-    {{numeroAleatorio()}}
+    {{dividir()}} <br> -->
+    <!-- {{numeroAleatorio()}} -->
 <!-- {{mensagem}}
         
 <br>
@@ -23,7 +33,7 @@ Hobbie {{hobbies[0]}}
 <br>
 Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
    </div>
-   teste
+  
    <script src="vue.js"></script>
     <script>
    
@@ -56,29 +66,38 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             // }
                
             
-            
+            // n1:10,
+            // n2:5,
+
+            site: 'https://daviddes@outlook.com',   
+            cor: 'red',
+            preenchimento: 'Placeholder',
+            valor: 'Entendo a diretiva V-bind',
+            check: true
+
                 
         },
 
         methods:{
                     somar: function somar() { //convencional
-                        return 4+2;
+                        return this.n1 + this.n2;
                     },
 
                     subtrair: function (){
                         //anonima
-                        return 4-2  
+                        return this.n1 - this.n2; 
                     },
                     multiplicar: () => {
-                        //arrow function
-                        return 4*2;
+                        //arrow function - não fazem referencia  para o escopo do objeto
+                        
+                        return this.n1 *  this.n2; //contexto léxico
                     },
                     dividir() { //forma de definor os pares de chaves/valor
-                        return 4 / 2;
+                        return  this.n1 /  this.n2;
                     },
-                    numeroAleatorio(){
-                        return Math.random()
-                    }
+                    // numeroAleatorio(){
+                    //     return Math.random()
+                    // }
                 }
     }) // vm = ViewModel
     console.log(vm) 
