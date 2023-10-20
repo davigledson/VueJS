@@ -23,7 +23,7 @@
    <div id="app">
     <!-- v-on ou @ -->
     <input type="text" @keyup="imprimirTexto('enviando parametro',5)">
-    <button @click="mensagemAlerta()">Botao</button>
+    <button @click="mensagemAlerta('texto',100,$event)">Botao</button>
 
     <!-- {{ 2 + 2 }}
     {{ mensagem.substr(0,3) }}
@@ -128,8 +128,8 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                         console.log(n)
                         console.log(this.xyz)
                     },
-                    mensagemAlerta(){
-                        alert('Mensagem de alerta')
+                    mensagemAlerta(p1,p2,evento){
+                        console.log(p1,p2,evento)
                     }
                 }
     }) // vm = ViewModel
