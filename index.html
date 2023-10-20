@@ -21,10 +21,15 @@
 </head>
 <body>
    <div id="app">
-    {{ 2 + 2 }}
+    <!-- v-on ou @ -->
+    <input type="text" @keyup="imprimirTexto()">
+    <button @click="mensagemAlerta()">Botao</button>
+
+    <!-- {{ 2 + 2 }}
     {{ mensagem.substr(0,3) }}
     <input type="text" :value="mensagem" :class="1 == 1 ? 'verde' : estilo">
-    <input type="text" :value=" 2+ 2" :class="teste ? 'verde' : estilo">
+    <input type="text" :value=" 2+ 2" :class="teste ? 'verde' : estilo"> -->
+
     <!-- PODE USA O v-bind ou o : (2 pontos) -->
     <!-- <a :href="site">Site</a>
     <p :class="cor" class="negrito">Entendendo a diretiva v-bind</p>
@@ -117,6 +122,12 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                     // numeroAleatorio(){
                     //     return Math.random()
                     // }
+                    imprimirTexto(){
+                        console.log('Teste')
+                    },
+                    mensagemAlerta(){
+                        alert('Mensagem de alerta')
+                    }
                 }
     }) // vm = ViewModel
     console.log(vm) 
