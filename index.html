@@ -22,7 +22,7 @@
 <body>
    <div id="app">
     <!-- v-on ou @ -->
-    <input type="text" @keyup="imprimirTexto()">
+    <input type="text" @keyup="imprimirTexto('enviando parametro',5)">
     <button @click="mensagemAlerta()">Botao</button>
 
     <!-- {{ 2 + 2 }}
@@ -97,7 +97,8 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
 
             mensagem: "Expressão",
             estilo: 'azul',
-            teste: false
+            teste: false,
+            xyz: true
 
                 
         },
@@ -122,8 +123,10 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                     // numeroAleatorio(){
                     //     return Math.random()
                     // }
-                    imprimirTexto(){
-                        console.log('Teste')
+                    imprimirTexto(t,n,x){
+                        console.log(t)
+                        console.log(n)
+                        console.log(this.xyz)
                     },
                     mensagemAlerta(){
                         alert('Mensagem de alerta')
