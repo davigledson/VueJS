@@ -8,15 +8,30 @@
         .red{
             color: red;
         }
+        .negrito {
+            color: green;
+        }
+        .azul {
+            background-color: blue;
+        }
+        .verde {
+            background-color: green;
+        }
     </style>
 </head>
 <body>
    <div id="app">
-    <a v-bind:href="site">Site</a>
-    <p v-bind:class="cor">Entendendo a diretiva v-bind</p>
+    {{ 2 + 2 }}
+    {{ mensagem.substr(0,3) }}
+    <input type="text" :value="mensagem" :class="1 == 1 ? 'verde' : estilo">
+    <input type="text" :value=" 2+ 2" :class="teste ? 'verde' : estilo">
+    <!-- PODE USA O v-bind ou o : (2 pontos) -->
+    <!-- <a :href="site">Site</a>
+    <p :class="cor" class="negrito">Entendendo a diretiva v-bind</p>
     <input type="text" v-bind:placeholder="preenchimento">
     <input type="text" v-bind:placeholder="preenchimento" v-bind:value="valor">
     <input type="checkbox" v-bind:checked="check">
+     -->
     <!-- {{somar()}} <br>
     {{subtrair()}} <br>
     {{multiplicar()}} <br>
@@ -69,11 +84,15 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             // n1:10,
             // n2:5,
 
-            site: 'https://daviddes@outlook.com',   
-            cor: 'red',
-            preenchimento: 'Placeholder',
-            valor: 'Entendo a diretiva V-bind',
-            check: true
+            // site: 'https://daviddes@outlook.com',   
+            // cor: 'red',
+            // preenchimento: 'Placeholder',
+            // valor: 'Entendo a diretiva V-bind',
+            // check: true
+
+            mensagem: "Expressão",
+            estilo: 'azul',
+            teste: false
 
                 
         },
