@@ -6,7 +6,8 @@
     <title>Vue</title>
     <style>
         .red{
-            color: red;
+           
+            background-color: red;
         }
         .negrito {
             color: green;
@@ -14,16 +15,45 @@
         .azul {
             background-color: blue;
         }
+        
         .verde {
             background-color: green;
+        }
+        .div-principal{
+ width: 200px;
+ height: 200px;
+        }
+        .div-comum{
+ width: 50px;
+ height: 50px;
+ display: inline-block;
+        }
+        .borda {
+            border: 1px solid;
         }
     </style>
 </head>
 <body>
    <div id="app">
+    
+
+    <div class="borda div-principal" :class="cor">
+      Cor:  {{cor}}
+      <br>
+      Posição X do mouse: {{posicaoX}}
+      Posição Y do mouse: {{posicaoY}}
+    </div>
+    <hr>
+    <div @click="mudarCor('verde')" class="borda div-comum"></div>
+    <div class="borda div-comum" @mouseover="mudarCor('azul') "  @mouseout="mudarCor('red')"></div>
+
+    <div @mousemove="coordenadas($event)" class="borda div-comum"></div>
+   
+
     <!-- v-on ou @ -->
-    <input type="text" @keyup="imprimirTexto('enviando parametro',5)">
-    <button @click="mensagemAlerta('texto',100,$event)">Botao</button>
+    
+    <!-- <input type="text" @keyup="imprimirTexto('enviando parametro',5)">
+    <button @click="mensagemAlerta('texto',100,$event)">Botao</button> -->
 
     <!-- {{ 2 + 2 }}
     {{ mensagem.substr(0,3) }}
@@ -62,43 +92,47 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
         el:'#app',
         data:{ //atributos reativos
             // mensagem: 'Primeiro template controlado pelo vue', //se colocar o {} duplo no html vai aparecer o conteúdo - dobro mushache (fazendo um binding - siginica amarração ou ligação)
-            // valorTotal: 150.47,
-            // logado: false,
-            // hobbies: [
-            //     'Dormir',
-            //     'Colecionar videos games antigos',
-            //     'Correr',
-            //     'Trilhas'
-            // ],
-            // perfil: {
-            //      nome: 'Davi Gledson',
-            //     site: 'davigledson@outlook.com',
-            //     idade: 21,
-            //     cursos: [
-            //         {
-            //             nome:'Laravel',carga: '50 horas',
+            valorTotal: 150.47,
+            logado: false,
+            hobbies: [
+                'Dormir',
+                'Colecionar videos games antigos',
+                'Correr',
+                'Trilhas'
+            ],
+            perfil: {
+                 nome: 'Davi Gledson',
+                site: 'davigledson@outlook.com',
+                idade: 21,
+                cursos: [
+                    {
+                        nome:'Laravel',carga: '50 horas',
                         
-            //         },
-            //         {
-            //           nome:'Bancos de Dados relacionais', carga: '40 horas'  
-            //         }
-            //     ]
-            // }
+                    },
+                    {
+                      nome:'Bancos de Dados relacionais', carga: '40 horas'  
+                    }
+                ]
+            },
                
             
-            // n1:10,
-            // n2:5,
+            n1:10,
+            n2:5,
 
-            // site: 'https://daviddes@outlook.com',   
-            // cor: 'red',
-            // preenchimento: 'Placeholder',
-            // valor: 'Entendo a diretiva V-bind',
-            // check: true
+            site: 'https://daviddes@outlook.com',   
+            cor: 'red',
+            preenchimento: 'Placeholder',
+            valor: 'Entendo a diretiva V-bind',
+            check: true,
 
             mensagem: "Expressão",
             estilo: 'azul',
             teste: false,
-            xyz: true
+            xyz: true,
+
+            cor:'branco',
+            posicaoX:0,
+            posicaoY:0,
 
                 
         },
@@ -120,9 +154,9 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                     dividir() { //forma de definor os pares de chaves/valor
                         return  this.n1 /  this.n2;
                     },
-                    // numeroAleatorio(){
-                    //     return Math.random()
-                    // }
+                    numeroAleatorio(){
+                        return Math.random()
+                    },
                     imprimirTexto(t,n,x){
                         console.log(t)
                         console.log(n)
@@ -130,7 +164,17 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                     },
                     mensagemAlerta(p1,p2,evento){
                         console.log(p1,p2,evento)
+                    },
+                    mudarCor(c){
+                       this.cor = c
+                    },
+                    coordenadas(e){
+                        this.posicaoX = e.clientX
+                        this.posicaoY = e.clientY
+                        //console.log(e.clientX,e.clientY)
                     }
+
+
                 }
     }) // vm = ViewModel
     console.log(vm) 
