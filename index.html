@@ -35,15 +35,27 @@
 </head>
 <body>
    <div id="app">
-    <a href="https://google.com"
+    <input type="text " id="inputTexto">
+    <button @click="selecionarElementoFilho()">Botão</button>
+
+    <select name="" id="opcoes">
+        <option value="A">opção 1</option>
+        <option value="B">opção 2</option>
+        <option value="C">opção 3</option>
+       
+    </select>
+
+    <p id="paragrafo" style="color: red;">Parágrafo</p>
+    <div id="bloco">Conteúdo interno da div</div>
+    <!-- <a href="https://google.com"
     target="_blank"
     @click.prevent="prevenirComportamentoPadrao($event)"
     >link</a>
 
     Mensagem {{msg}}
-    <br>
+    <br> -->
     <!-- once - vai executa só uma vez -->
-    <button @click.once="executarUmaVez()">Botão</button>
+    <!-- <button @click.once="executarUmaVez()">Botão</button>
     <p>Cliques: {{ cliques }}</p>
     <hr>
     <form @submit.prevent.once="prevenirUmaVez()">
@@ -52,11 +64,14 @@
     </button> 
     </form>
     <p>Formulario: {{formulario}}</p>
-    <hr>
+    <hr> -->
+
     <!-- @keyup.x - Vai executar só uma determinada tecla (ex: x) -->
     <!-- @keyup.Shift.Enter - só se aperta duas teclas de uma vez  -->
-    <input type="text"  @keyup.Shift.Enter="capturandoTeclas($event)">
-    <p>Teclas: {{teclas}}</p>
+    <!-- <input type="text"  @keyup.Shift.Enter="capturandoTeclas($event)">
+    <p>Teclas: {{teclas}}</p> -->
+
+        
     
 
     <!-- <div class="borda div-principal" :class="cor">
@@ -213,6 +228,19 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                     },
                     capturandoTeclas(event){
                         this.teclas += 'Modificadores encadeados com sucesso!' + event.key
+                    },
+                    selecionarElementoFilho(){
+                        // console.log(inputTexto)
+                        // console.log(inputTexto.type)
+                        // console.log(inputTexto.value)
+
+                        //console.log(opcoes)
+                        //console.log(opcoes.value)
+
+                        //console.log(paragrafo)
+                        //console.log(paragrafo.style.color)
+
+                        console.log(bloco.innerHTML)
                     }
 
                 }
