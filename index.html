@@ -35,9 +35,31 @@
 </head>
 <body>
    <div id="app">
+    <a href="https://google.com"
+    target="_blank"
+    @click.prevent="prevenirComportamentoPadrao($event)"
+    >link</a>
+
+    Mensagem {{msg}}
+    <br>
+    <!-- once - vai executa só uma vez -->
+    <button @click.once="executarUmaVez()">Botão</button>
+    <p>Cliques: {{ cliques }}</p>
+    <hr>
+    <form @submit.prevent.once="prevenirUmaVez()">
+       <button type="submit">
+        Enviar
+    </button> 
+    </form>
+    <p>Formulario: {{formulario}}</p>
+    <hr>
+    <!-- @keyup.x - Vai executar só uma determinada tecla (ex: x) -->
+    <!-- @keyup.Shift.Enter - só se aperta duas teclas de uma vez  -->
+    <input type="text"  @keyup.Shift.Enter="capturandoTeclas($event)">
+    <p>Teclas: {{teclas}}</p>
     
 
-    <div class="borda div-principal" :class="cor">
+    <!-- <div class="borda div-principal" :class="cor">
       Cor:  {{cor}}
       <br>
       Posição X do mouse: {{posicaoX}}
@@ -47,7 +69,7 @@
     <div @click="mudarCor('verde')" class="borda div-comum"></div>
     <div class="borda div-comum" @mouseover="mudarCor('azul') "  @mouseout="mudarCor('red')"></div>
 
-    <div @mousemove="coordenadas($event)" class="borda div-comum"></div>
+    <div @mousemove="coordenadas($event)" class="borda div-comum"></div> -->
    
 
     <!-- v-on ou @ -->
@@ -134,6 +156,11 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             posicaoX:0,
             posicaoY:0,
 
+            msg: '',
+            cliques: 0,
+            formulario: '',
+            teclas:'',
+
                 
         },
 
@@ -172,8 +199,21 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                         this.posicaoX = e.clientX
                         this.posicaoY = e.clientY
                         //console.log(e.clientX,e.clientY)
-                    }
+                    },
+                    prevenirComportamentoPadrao(event){
+                        //event.preventDefault();
+                        this.msg ='Comportamento padrão ativado'
+                    },
 
+                    executarUmaVez(){
+                        this.cliques++
+                    },
+                    prevenirUmaVez(){
+                        this.formulario= 'Prevenindo o comportamento padrão '
+                    },
+                    capturandoTeclas(event){
+                        this.teclas += 'Modificadores encadeados com sucesso!' + event.key
+                    }
 
                 }
     }) // vm = ViewModel
