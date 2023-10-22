@@ -35,7 +35,33 @@
 </head>
 <body>
    <div id="app">
-    <input type="text " id="inputTexto">
+    <!-- v-if simples --> 
+    <!-- toogle -->
+    <!-- recebe a negação -->
+    <button @click="exibirSaldo = !exibirSaldo">
+               
+        <span v-if="!exibirSaldo">Exibir Saldo</span>
+        <span v-if="exibirSaldo">Ocultar Saldo</span>
+    
+    </button>
+    <p>Saldo: 
+        <span v-if="exibirSaldo">R$ {{saldo}}</span>
+       
+    </p>
+    Idade: <input type="text" id="inputIdade" @blur="setIdade()">
+    <!-- v-if e else devem estar no msm escopo do html -->
+   <p v-if="idade < 18">Menor de idade</p>
+   <p v-else="idade">Maior de idade</p>
+
+   Nota: <input type="text" id="inputNota" @blur="setNota()">
+   <p v-if="nota == ''">Digite a nota do aluno</p>
+   <p v-else-if="nota >= 7 && nota <=10">Aluno aprovado</p>
+   <p v-else-if="nota >= 5 && nota <=7">Aluno em recuperação</p>
+   <p v-else-if="nota >= 0 && nota <=5">Aluno reprovado</p>
+   <p v-else>A nota informada é invalida </p>
+   <!-- v-if, v-else, v-else-if -->
+
+    <!-- <input type="text " id="inputTexto">
     <button @click="selecionarElementoFilho()">Botão</button>
 
     <select name="" id="opcoes">
@@ -44,9 +70,10 @@
         <option value="C">opção 3</option>
        
     </select>
-
     <p id="paragrafo" style="color: red;">Parágrafo</p>
-    <div id="bloco">Conteúdo interno da div</div>
+    <div id="bloco">Conteúdo interno da div</div> -->
+
+
     <!-- <a href="https://google.com"
     target="_blank"
     @click.prevent="prevenirComportamentoPadrao($event)"
@@ -176,6 +203,12 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             formulario: '',
             teclas:'',
 
+            saldo:457,
+            exibirSaldo:true,
+            idade:0,
+            nota:0
+             
+
                 
         },
 
@@ -241,6 +274,14 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                         //console.log(paragrafo.style.color)
 
                         console.log(bloco.innerHTML)
+                    },
+                    setIdade(){
+                       // console.log(inputIdade.value)
+                       this.idade = inputIdade.value
+                    },
+                    setNota(){
+                        this.nota = inputNota.value
+                        console.log(this.nota)
                     }
 
                 }
