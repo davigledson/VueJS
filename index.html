@@ -35,10 +35,17 @@
 </head>
 <body>
    <div id="app">
+    <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">exemplo de tooltip</p>
+    <!-- v-show - utiliza a  propriedade display do html -->
+    <div v-show="exibirTextoAjuda">
+        <h3>Titulo texto ajuda</h3>
+        <p> contenfo texto ajuda</p>
+    </div>
+
     <!-- v-if simples --> 
     <!-- toogle -->
     <!-- recebe a negação -->
-    <button @click="exibirSaldo = !exibirSaldo">
+    <!-- <button @click="exibirSaldo = !exibirSaldo">
                
         <span v-if="!exibirSaldo">Exibir Saldo</span>
         <span v-if="exibirSaldo">Ocultar Saldo</span>
@@ -48,9 +55,9 @@
         <span v-if="exibirSaldo">R$ {{saldo}}</span>
        
     </p>
-    Idade: <input type="text" id="inputIdade" @blur="setIdade()">
+    Idade: <input type="text" id="inputIdade" @blur="setIdade()"> -->
     <!-- v-if e else devem estar no msm escopo do html -->
-   <p v-if="idade < 18">Menor de idade</p>
+   <!-- <p v-if="idade < 18">Menor de idade</p>
    <p v-else="idade">Maior de idade</p>
 
    Nota: <input type="text" id="inputNota" @blur="setNota()">
@@ -58,7 +65,8 @@
    <p v-else-if="nota >= 7 && nota <=10">Aluno aprovado</p>
    <p v-else-if="nota >= 5 && nota <=7">Aluno em recuperação</p>
    <p v-else-if="nota >= 0 && nota <=5">Aluno reprovado</p>
-   <p v-else>A nota informada é invalida </p>
+   <p v-else>A nota informada é invalida </p> -->
+
    <!-- v-if, v-else, v-else-if -->
 
     <!-- <input type="text " id="inputTexto">
@@ -206,7 +214,9 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             saldo:457,
             exibirSaldo:true,
             idade:0,
-            nota:0
+            nota:0,
+
+            exibirTextoAjuda: false
              
 
                 
@@ -282,7 +292,8 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                     setNota(){
                         this.nota = inputNota.value
                         console.log(this.nota)
-                    }
+                    },
+                   
 
                 }
     }) // vm = ViewModel
