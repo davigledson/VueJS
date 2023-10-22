@@ -35,12 +35,16 @@
 </head>
 <body>
    <div id="app">
-    <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">exemplo de tooltip</p>
+    <div v-html="elementosHTML">
+       Texto de <strong>exemplo</strong>
+    </div>
+    
+    <!-- <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">exemplo de tooltip</p> -->
     <!-- v-show - utiliza a  propriedade display do html -->
-    <div v-show="exibirTextoAjuda">
+    <!-- <div v-show="exibirTextoAjuda">
         <h3>Titulo texto ajuda</h3>
         <p> contenfo texto ajuda</p>
-    </div>
+    </div> -->
 
     <!-- v-if simples --> 
     <!-- toogle -->
@@ -216,7 +220,9 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             idade:0,
             nota:0,
 
-            exibirTextoAjuda: false
+            exibirTextoAjuda: false,
+
+            elementosHTML: '<p>Site<strong>Davi Gledson</strong></p>'
              
 
                 
