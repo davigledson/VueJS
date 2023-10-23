@@ -66,6 +66,18 @@
             </tr>
         </tbody>
     </table>
+    <hr>
+    <ul>
+        <li v-for="p in publicacoes" style="border: solid 1px; margin-bottom: 10px;" :key="p.id">
+            <div>
+                {{p.publicacao}}
+                <hr>
+                <input type="text">
+            </div>
+            
+        </li>
+    </ul>
+    <button @click="misturarArray()">Button</button>
     <!-- v-once - Evitar que elementos HTML sejam renderizados novamente -->
     <!-- <p v-once>Saldo inicial {{saldo}}</p>
     <p>Saldo atualizado {{saldo}}</p>
@@ -279,7 +291,12 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                      descricao: 'MySQL'
                 }
                 
-            }
+            },
+            publicacoes: [
+                { id:1, publicacao: 'Publicacao 1' }, 
+                    { id:2, publicacao: 'Publicacao 2' },
+                {   id:3, publicacao: 'Publicacao 3'}
+            ]
              
 
                 
@@ -361,6 +378,14 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                     },
                     debitar(){
                         this.saldo -= parseFloat(valor.value)
+                    },
+                    misturarArray(){
+                        let misturado = []
+                        misturado[0] = this.publicacoes[2]
+                        misturado[1] = this.publicacoes[0]
+                        misturado[2] = this.publicacoes[1]
+
+                        this.publicacoes = misturado
                     }
 
                    
