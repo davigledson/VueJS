@@ -35,12 +35,44 @@
 </head>
 <body>
    <div id="app">
+    <ul>
+        <li v-for="(curso, chave) in cursos">{{chave}} - {{curso}} </li>
+        
+    </ul>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr v-for="(curso,chave) in cursos2">
+                <td>{{chave}}</td>
+                <td>{{curso.titulo}}</td>
+                <td>{{curso.descricao}}</td>
+                
+            </tr>
+            <!-- destruturing assingnment - do javascript ES6-->
+            <tr v-for="({titulo,descricao}, chave) in cursos2">
+                <td>{{chave}}</td>
+                <td>{{titulo}}</td>
+                <td>{{descricao}}</td>
+                
+                
+            </tr>
+        </tbody>
+    </table>
     <!-- v-once - Evitar que elementos HTML sejam renderizados novamente -->
-    <p v-once>Saldo inicial {{saldo}}</p>
+    <!-- <p v-once>Saldo inicial {{saldo}}</p>
     <p>Saldo atualizado {{saldo}}</p>
     <input type="text" id="valor">
     <button @click="creditar()">Creditar</button>
-    <button @click="debitar()">Debitar</button>
+    <button @click="debitar()">Debitar</button> -->
+
     <!-- <div v-html="elementosHTML">
        Texto de <strong>exemplo</strong>
     </div>
@@ -190,15 +222,15 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                  nome: 'Davi Gledson',
                 site: 'davigledson@outlook.com',
                 idade: 21,
-                cursos: [
-                    {
-                        nome:'Laravel',carga: '50 horas',
+                // cursos: [
+                //     {
+                //         nome:'Laravel',carga: '50 horas',
                         
-                    },
-                    {
-                      nome:'Bancos de Dados relacionais', carga: '40 horas'  
-                    }
-                ]
+                //     },
+                //     {
+                //       nome:'Bancos de Dados relacionais', carga: '40 horas'  
+                //     }
+                // ]
             },
                
             
@@ -234,7 +266,20 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
 
             elementosHTML: '<p>Site<strong>Davi Gledson</strong></p>',
 
-            saldo: 1000
+            saldo: 1000,
+
+            cursos: ['Laravel', 'Web Completo', 'Banco de Dados'],
+            cursos2: {
+                1000: {
+                    titulo: 'Laravel',
+                     descricao: 'aprendendo o framework'
+                },
+                1001: {
+                    titulo: 'Banco de dados',
+                     descricao: 'MySQL'
+                }
+                
+            }
              
 
                 
