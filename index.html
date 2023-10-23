@@ -35,9 +35,19 @@
 </head>
 <body>
    <div id="app">
-    <div v-html="elementosHTML">
+    <!-- v-once - Evitar que elementos HTML sejam renderizados novamente -->
+    <p v-once>Saldo inicial {{saldo}}</p>
+    <p>Saldo atualizado {{saldo}}</p>
+    <input type="text" id="valor">
+    <button @click="creditar()">Creditar</button>
+    <button @click="debitar()">Debitar</button>
+    <!-- <div v-html="elementosHTML">
        Texto de <strong>exemplo</strong>
     </div>
+    <div v-text="elementosHTML">
+        Texto de <strong>exemplo</strong>
+     </div> -->
+    
     
     <!-- <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">exemplo de tooltip</p> -->
     <!-- v-show - utiliza a  propriedade display do html -->
@@ -215,14 +225,16 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             formulario: '',
             teclas:'',
 
-            saldo:457,
+            //saldo:457,
             exibirSaldo:true,
             idade:0,
             nota:0,
 
             exibirTextoAjuda: false,
 
-            elementosHTML: '<p>Site<strong>Davi Gledson</strong></p>'
+            elementosHTML: '<p>Site<strong>Davi Gledson</strong></p>',
+
+            saldo: 1000
              
 
                 
@@ -299,6 +311,13 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                         this.nota = inputNota.value
                         console.log(this.nota)
                     },
+                    creditar(){
+                        this.saldo += parseFloat(valor.value) 
+                    },
+                    debitar(){
+                        this.saldo -= parseFloat(valor.value)
+                    }
+
                    
 
                 }
