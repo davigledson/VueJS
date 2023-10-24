@@ -35,6 +35,20 @@
 </head>
 <body>
    <div id="app">
+    <template v-if="saudacao">
+        
+        <h1>Boas-Vindas</h1>
+        <p>Conteudo da tag <strong>template</strong></p>
+
+    </template>
+    <!-- vai renderizar div por div -->
+    <!-- <div v-for="n in 10">
+        <p>2 x {{n}} = {{2*n}}</p>
+    </div> -->
+    <!-- vai renderizar div so uma vez -->
+    <template v-for="n in 10">
+        <p>2 x {{n}} = {{2*n}}</p>
+    </template>
 
     <ul>
         <li v-for="c in comentarios">{{c.id}} - {{c.comentario}}</li>
@@ -315,7 +329,8 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                 {id: 1 , comentario: ' Comentario 1'},
                 {id: 2 , comentario: ' Comentario 2'},
                 {id: 3 , comentario: ' Comentario 3'},
-            ]
+            ],
+            saudacao: true,
              
 
                 
