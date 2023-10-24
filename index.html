@@ -35,18 +35,41 @@
 </head>
 <body>
    <div id="app">
-    <template v-if="saudacao">
+    <h4>Adicionar pacientes</h4>
+    <span>Nome</span> <input type="text" id="inputNome"><br>
+    <span>Idade:</span> <input type="text" id="inputIdade"><br>
+    <span>Plano:</span> <input type="text" id="inputPlano"><br>
+    <button @click="adicionarPaciente()">Adicionar</button>
+    <hr>
+
+    <h4>Ultimo paciente cadastrado</h4>
+    <p v-if="pacientes.length > 0">
+        Paciente {{pacientes[pacientes.length -1].nome}},Paciente {{pacientes[pacientes.length -1].idade}},
+        Paciente {{pacientes[pacientes.length -1].plano}},
+    </p>
+  <hr>
+  <h4>Pacientes do plano Ouro</h4>
+  <p v-for="p in pacientes">
+    {{p.plano == 'Ouro' ? p.nome : ''}}
+
+</p>
+  <hr>
+
+    <h4>Pacientes cadastrados</h4>
+    <p v-for="p in pacientes">{{p.nome}}</p>
+
+    <!-- <template v-if="saudacao">
         
         <h1>Boas-Vindas</h1>
         <p>Conteudo da tag <strong>template</strong></p>
 
-    </template>
+    </template> -->
     <!-- vai renderizar div por div -->
     <!-- <div v-for="n in 10">
         <p>2 x {{n}} = {{2*n}}</p>
     </div> -->
     <!-- vai renderizar div so uma vez -->
-    <template v-for="n in 10">
+    <!-- <template v-for="n in 10">
         <p>2 x {{n}} = {{2*n}}</p>
     </template>
 
@@ -82,9 +105,9 @@
                 <td>{{curso.titulo}}</td>
                 <td>{{curso.descricao}}</td>
                 
-            </tr>
+            </tr> -->
             <!-- destruturing assingnment - do javascript ES6-->
-            <tr v-for="({titulo,descricao}, chave) in cursos2">
+            <!-- <tr v-for="({titulo,descricao}, chave) in cursos2">
                 <td>{{chave}}</td>
                 <td>{{titulo}}</td>
                 <td>{{descricao}}</td>
@@ -104,7 +127,7 @@
             
         </li>
     </ul>
-    <button @click="misturarArray()">Button</button>
+    <button @click="misturarArray()">Button</button> -->
     <!-- v-once - Evitar que elementos HTML sejam renderizados novamente -->
     <!-- <p v-once>Saldo inicial {{saldo}}</p>
     <p>Saldo atualizado {{saldo}}</p>
@@ -331,6 +354,7 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                 {id: 3 , comentario: ' Comentario 3'},
             ],
             saudacao: true,
+            pacientes: []
              
 
                 
@@ -439,6 +463,13 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                             1,
                             {id: 2, comentario: 'Comentario 2 atualizado'}
                             )
+                    },
+                    adicionarPaciente(){
+                        this.pacientes.push( {
+                            nome: inputNome.value,
+                            idade: inputIdade.value,
+                            plano: inputPlano.value,
+                        })
                     }
 
 
