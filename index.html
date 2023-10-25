@@ -44,15 +44,16 @@
 
     <h4>Ultimo paciente cadastrado</h4>
     <p v-if="pacientes.length > 0">
-        Paciente {{pacientes[pacientes.length -1].nome}},Paciente {{pacientes[pacientes.length -1].idade}},
-        Paciente {{pacientes[pacientes.length -1].plano}},
+       {{ultimoPaciente}}
     </p>
   <hr>
   <h4>Pacientes do plano Ouro</h4>
   <p v-for="p in pacientes">
     {{p.plano == 'Ouro' ? p.nome : ''}}
+    </p>
 
-</p>
+    <p v-for="p in pacientesPlanoOuro">{{p.nome}}</p>
+
   <hr>
 
     <h4>Pacientes cadastrados</h4>
@@ -358,6 +359,20 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
              
 
                 
+        },
+        computed: {
+            ultimoPaciente(){
+                let key = this.pacientes.length -1
+                let txt =''
+                txt += 'Paciente' + this.pacientes[key].nome
+                txt += ', idade' + this.pacientes[key].idade   
+                txt += ', Plano' + this.pacientes[key].plano  
+
+                return txt.toUpperCase()
+            },
+            pacientesPlanoOuro(){
+                return this.pacientes.filter(item => item.plano == 'Ouro')
+            }
         },
 
         methods:{
