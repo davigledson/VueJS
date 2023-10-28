@@ -38,6 +38,27 @@
     {{paciente}} <br>
    <!-- Two-way-data Binding -->
    <input type="text"  v-model="paciente">
+    <br>
+    <!-- v-model - equivalente ao name  -->
+    <input type="radio" value="f"  v-model="sexo" name="sexo"> Feminino
+    <input type="radio" value="m" v-model="sexo" > Masculino
+    <br>
+    {{sexo}}
+
+    <select v-model="plano">
+        <option value="" disabled> Selecione um plano</option>
+        <option value="1">Básico 1</option>
+        <option value="2">Básico 2</option>
+        <option value="3">Master</option>
+    </select>{{plano}}
+    <hr>
+    <input type="checkbox" value="100" v-model="doencas">Asma
+    <input type="checkbox" value="101"  v-model="doencas">Diabete tipo 1
+    <input type="checkbox" value="102"  v-model="doencas">Ritite
+    <br> {{doencas}}
+    <textarea  v-model="diagnostico"></textarea>
+    <br> {{diagnostico}}
+
     <!-- <input type="text" :value="paciente" @keyup="paciente = $event.target.value"> -->
 
     <!-- <h4>Adicionar pacientes</h4>
@@ -361,7 +382,11 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             ],
             saudacao: true,
             //pacientes: []
-            paciente: 'João da silva'
+            paciente: 'João da silva',
+            sexo:'',
+            plano:'',
+            doencas: [ ],
+            diagnostico: ''
              
 
                 
