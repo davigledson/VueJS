@@ -35,7 +35,12 @@
 </head>
 <body>
    <div id="app">
-    <h4>Adicionar pacientes</h4>
+    {{paciente}} <br>
+   <!-- Two-way-data Binding -->
+   <input type="text"  v-model="paciente">
+    <!-- <input type="text" :value="paciente" @keyup="paciente = $event.target.value"> -->
+
+    <!-- <h4>Adicionar pacientes</h4>
     <span>Nome</span> <input type="text" id="inputNome"><br>
     <span>Idade:</span> <input type="text" id="inputIdade"><br>
     <span>Plano:</span> <input type="text" id="inputPlano"><br>
@@ -57,7 +62,7 @@
   <hr>
 
     <h4>Pacientes cadastrados</h4>
-    <p v-for="p in pacientes">{{p.nome}}</p>
+    <p v-for="p in pacientes">{{p.nome}}</p> -->
 
     <!-- <template v-if="saudacao">
         
@@ -355,7 +360,8 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                 {id: 3 , comentario: ' Comentario 3'},
             ],
             saudacao: true,
-            pacientes: []
+            //pacientes: []
+            paciente: 'João da silva'
              
 
                 
@@ -485,7 +491,11 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                             idade: inputIdade.value,
                             plano: inputPlano.value,
                         })
-                    }
+                    },
+                    // setPaciente(e){
+                    //     this.paciente = e.target.value
+                    // },
+
 
 
                    
