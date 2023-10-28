@@ -35,12 +35,22 @@
 </head>
 <body>
    <div id="app">
-    {{paciente}} <br>
-   <!-- Two-way-data Binding -->
-   <input type="text"  v-model="paciente">
+
+    <span>Paciente:</span> <input type="text" v-model="paciente">
     <br>
+
+    <ul>
+        <li v-for="p in lista">
+            {{p.nome}}, {{p.idade}}
+        </li>
+    </ul>
+
+    <!-- {{paciente}} <br> -->
+   <!-- Two-way-data Binding -->
+   <!-- <input type="text"  v-model="paciente">
+    <br> -->
     <!-- v-model - equivalente ao name  -->
-    <input type="radio" value="f"  v-model="sexo" name="sexo"> Feminino
+    <!-- <input type="radio" value="f"  v-model="sexo" name="sexo"> Feminino
     <input type="radio" value="m" v-model="sexo" > Masculino
     <br>
     {{sexo}}
@@ -57,7 +67,7 @@
     <input type="checkbox" value="102"  v-model="doencas">Ritite
     <br> {{doencas}}
     <textarea  v-model="diagnostico"></textarea>
-    <br> {{diagnostico}}
+    <br> {{diagnostico}} -->
 
     <!-- <input type="text" :value="paciente" @keyup="paciente = $event.target.value"> -->
 
@@ -381,12 +391,24 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
                 {id: 3 , comentario: ' Comentario 3'},
             ],
             saudacao: true,
+
             //pacientes: []
-            paciente: 'João da silva',
+            //paciente: 'João da silva',
             sexo:'',
             plano:'',
             doencas: [ ],
-            diagnostico: ''
+            diagnostico: '',
+
+            paciente:'',
+            pacientes: [
+                {nome: 'Joage', idade: 40},
+                {nome: 'Davi', idade: 20},
+                {nome: 'Maria', idade: 230},
+                {nome: 'Joao', idade: 20},
+            ],
+            lista: []
+
+
              
 
                 
@@ -403,6 +425,16 @@ Perfil {{perfil.site}}, - {{perfil.cursos[0].nome}} -->
             },
             pacientesPlanoOuro(){
                 return this.pacientes.filter(item => item.plano == 'Ouro')
+            }
+        },
+        watch: {
+           
+            //tem que ter o msm nome da propriedade observada
+            //paciente(valorNovo,valorAntigo)
+            paciente(valorNovo)
+            {
+                console.log(valorNovo)
+                this.lista = this.pacientes.filter(p => p.nome.match(valorNovo))
             }
         },
 
